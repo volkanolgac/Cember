@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - ÇEMBER</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --surface: #121a2d;
+      --card: #18233b;
+      --text: #f8fafc;
+      --muted: #a8b3c7;
+      --accent: #38bdf8;
+      --border: #293752;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px 16px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 850px;
+      margin: auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 42px 34px;
+    }
+    h1 { margin: 0 0 8px; font-size: 2.2rem; }
+    h2 { color: var(--accent); margin-top: 34px; }
+    p, li { color: var(--text); }
+    .meta, .note { color: var(--muted); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 18px 0;
+    }
+    a { color: var(--accent); }
+    code {
+      background: #0a1222;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+    footer {
+      margin-top: 42px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      font-size: .9rem;
+    }
+  </style>
+</head>
+<body>
+<main class="container">
+  <header>
+    <h1>Privacy Policy</h1>
+    <p class="meta"><strong>Application:</strong> ÇEMBER</p>
+    <p class="meta"><strong>Developer:</strong> Volkan Olgaç</p>
+    <p class="meta"><strong>Contact:</strong> <a href="mailto:volkanolgac@gmail.com">volkanolgac@gmail.com</a></p>
+    <p class="meta"><strong>Effective date:</strong> September 23, 2026</p>
+  </header>
+
+  <section>
+    <h2>1. Overview</h2>
+    <p>
+      This Privacy Policy explains how ÇEMBER handles information when you use the
+      mobile game. ÇEMBER is designed primarily to run game logic and store game
+      progress locally on your device. We do not require an account, email address,
+      telephone number, or other direct registration information to play the game.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Information Stored Locally on Your Device</h2>
+    <p>
+      ÇEMBER uses browser local storage within the application to save gameplay
+      information and preferences. Depending on the features you use, this may
+      include:
+    </p>
+    <ul>
+      <li>Game progress and completed stages;</li>
+      <li>Tournament and adventure progress;</li>
+      <li>Scores, achievements, combinations, and similar gameplay statistics;</li>
+      <li>Selected game settings, teams, skins, and other preferences.</li>
+    </ul>
+    <p>
+      This information is stored locally on your device and is not intended to be
+      uploaded to a personal account or stored by the developer on a dedicated
+      application database.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Online Multiplayer</h2>
+    <p>
+      ÇEMBER includes an optional online multiplayer mode. If you choose to use
+      multiplayer features, the game communicates with third-party public MQTT
+      services over secure WebSocket connections to allow two players to establish
+      and synchronize a game session.
+    </p>
+    <p>During an online multiplayer session, the game may transmit:</p>
+    <ul>
+      <li>A temporary six-digit room code;</li>
+      <li>A temporary randomly generated client/session identifier;</li>
+      <li>The player name or profile information entered or selected within the game;</li>
+      <li>Selected team and ready-status information;</li>
+      <li>Game inputs, scores, player positions, ball and game-state information;</li>
+      <li>Connection timing and ping information required for synchronization.</li>
+    </ul>
+    <p>
+      This information is transmitted only to support the multiplayer session.
+      The developer does not operate a separate user-account database for this
+      information and does not intentionally use multiplayer messages to build
+      personal profiles.
+    </p>
+    <div class="card">
+      <strong>Third-party multiplayer infrastructure:</strong>
+      <ul>
+        <li>HiveMQ Public MQTT Broker</li>
+        <li>EMQX Public MQTT Broker</li>
+      </ul>
+      <p class="note">
+        These services are third-party infrastructure. Their own privacy policies,
+        logging practices, and terms may apply to network connections made to their
+        services. Network-level metadata such as an IP address may be visible to
+        the infrastructure provider as part of normal Internet communication.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Network and Technical Information</h2>
+    <p>
+      The application can detect whether the device is connected to a network and
+      may use connection type information to manage the multiplayer experience.
+      The application itself does not request or intentionally collect your precise
+      physical location, contacts, photos, or address book.
+    </p>
+    <p>
+      Standard Internet communication can also expose technical information,
+      such as an IP address, to the network or third-party service being contacted.
+      Such information is handled by the relevant network or service provider
+      according to its own policies.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Permissions</h2>
+    <p>
+      The Android application package may declare permissions required by the
+      WebView application shell, including Internet/network access and vibration.
+      The game does not use the microphone as a gameplay feature.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Advertising and Analytics</h2>
+    <p>
+      ÇEMBER does not intentionally collect personal information for advertising
+      profiles and does not require third-party advertising identifiers for its
+      core gameplay. No dedicated analytics or advertising SDK is intentionally
+      used by the game to create user profiles.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Data Sharing</h2>
+    <p>
+      The developer does not sell, rent, or trade users' personal information.
+      Information is transmitted to third-party multiplayer infrastructure only
+      when necessary to provide the optional online multiplayer functionality.
+    </p>
+    <p>
+      Information may also be disclosed when required by applicable law, legal
+      process, or a valid governmental request.
+    </p>
+  </section>
+
+  <section>
+    <h2>8. Data Retention and Deletion</h2>
+    <p>
+      Local gameplay data remains on the device until it is removed by the user,
+      application storage is cleared, or the application is uninstalled.
+    </p>
+    <p>
+      Multiplayer session messages are transient communications used for real-time
+      gameplay. The developer does not maintain a permanent player account or
+      gameplay database for ÇEMBER.
+    </p>
+    <p>
+      If you have a privacy-related request, you may contact the developer at
+      <a href="mailto:volkanolgac@gmail.com">volkanolgac@gmail.com</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. Children's Privacy</h2>
+    <p>
+      ÇEMBER does not knowingly request or require children to provide personal
+      information such as an email address, telephone number, or real-world
+      identity to play the game.
+    </p>
+    <p>
+      Because the optional multiplayer mode can involve a player-provided display
+      name and network communication, parents or guardians should supervise
+      children's use of online multiplayer features where appropriate.
+    </p>
+    <p>
+      If you believe that a child has provided personal information through the
+      application, please contact
+      <a href="mailto:volkanolgac@gmail.com">volkanolgac@gmail.com</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. Security</h2>
+    <p>
+      The application uses secure WebSocket connections for its supported online
+      multiplayer brokers and uses an isolated local WebView environment for its
+      application assets. No security method can guarantee absolute protection
+      against every possible threat, but reasonable technical measures are used
+      to protect the application and its communications.
+    </p>
+  </section>
+
+  <section>
+    <h2>11. Changes to This Privacy Policy</h2>
+    <p>
+      This Privacy Policy may be updated when the application's functionality,
+      data practices, or applicable legal requirements change. The latest version
+      will be made available with the application or at the location where this
+      policy is published.
+    </p>
+  </section>
+
+  <section>
+    <h2>12. Contact</h2>
+    <div class="card">
+      <p><strong>Developer:</strong> Volkan Olgaç</p>
+      <p><strong>Application:</strong> ÇEMBER</p>
+      <p><strong>Email:</strong> <a href="mailto:volkanolgac@gmail.com">volkanolgac@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Volkan Olgaç. All rights reserved.
+  </footer>
+</main>
+</body>
+</html>
