@@ -1,0 +1,63 @@
+{
+  "appName": "Cember",
+  "applicationId": "com.aistudio.applet.uanwkh",
+  "versionCode": 1,
+  "versionName": "1.0.0",
+  "webAppOrigin": "https://appassets.androidplatform.net",
+  "webAppAssetDirectory": "web",
+  "webAppEntry": "index.html",
+  "orientationMode": "PORTRAIT",
+  "fullscreenMode": "IMMERSIVE_STICKY",
+  "networkRequired": true,
+  "hardwareAcceleration": true,
+  "safeBrowsingEnabled": true,
+  "keepScreenOn": true,
+  "vibrationEnabled": true,
+  "cameraEnabled": false,
+  "microphoneEnabled": true,
+  "geolocationEnabled": false,
+  "notificationsEnabled": false,
+  "clipboardEnabled": true,
+  "downloadPolicyEnabled": true,
+  "filePickerEnabled": true,
+  "backButtonPolicy": "WEB_HISTORY_FIRST",
+  "splashConfiguration": {
+    "backgroundColor": "#0B0F19",
+    "iconAnimationDurationMs": 800
+  },
+  "privacy": {
+    "contactEmail": "volkanolgac@gmail.com",
+    "developerName": "Volkan Olga\u00e7",
+    "dataCollection": {
+      "personalData": false,
+      "accountData": false,
+      "email": false,
+      "location": false,
+      "camera": false,
+      "microphone": true,
+      "deviceIdentifiers": false,
+      "analytics": true,
+      "advertising": false,
+      "crashReports": false,
+      "gameplayData": false
+    },
+    "dataUse": [
+      "Local application rendering and execution",
+      "On-device storage of user game states, preferences, and session data"
+    ],
+    "thirdParties": [
+      "react.dev",
+      "fonts.googleapis.com",
+      "fonts.gstatic.com",
+      "developer.mozilla.org",
+      "reactjs.org",
+      "bugs.webkit.org",
+      "flagcdn.com",
+      "tailwindcss.com",
+      "feross.org",
+      "github.com"
+    ],
+    "retention": "No personal data is collected or retained on remote servers by default. Locally stored web cache and preferences remain on the device until the user clears application storage or uninstalls the application.",
+    "deletion": "Users can delete all local application data at any time through Android Settings > Apps > Storage > Clear Data, or by requesting support at the contact email address."
+  }
+}

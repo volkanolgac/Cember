@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Volkan Web2Android Host Testbed</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-badge">VOLKAN RUNTIME</div>
+      <h1>Web2Android Shell</h1>
+      <p class="subtitle">Embedded Local Web Application Host</p>
+    </header>
+
+    <section class="card game-card">
+      <div class="card-header">
+        <h2>🎮 60 FPS Particle Canvas Loop</h2>
+        <span class="fps-badge" id="fpsCounter">60 FPS</span>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="gameCanvas" width="360" height="180"></canvas>
+      </div>
+      <div class="canvas-controls">
+        <button class="btn btn-sm" id="btnSpawnParticles">✨ Burst</button>
+        <button class="btn btn-sm" id="btnToggleMotion">⏯️ Pause</button>
+        <button class="btn btn-sm" id="btnClearCanvas">🧹 Clear</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📡 Environment & Connectivity</h2>
+      <div class="grid-2">
+        <div class="stat-box">
+          <span class="stat-label">Network Status</span>
+          <span class="stat-value text-success" id="netStatus">ONLINE</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Connection Type</span>
+          <span class="stat-value" id="netType">Checking…</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">App ID</span>
+          <span class="stat-value" id="appId">Loading…</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Host Version</span>
+          <span class="stat-value" id="appVer">1.0.0</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>⚡ Native Bridge Actions</h2>
+      <div class="action-grid">
+        <button class="btn" id="btnVibrate">📳 Vibrate (50ms)</button>
+        <button class="btn" id="btnShare">📤 Native Share</button>
+        <button class="btn" id="btnFullscreen">⛶ Toggle Fullscreen</button>
+        <button class="btn" id="btnOrientation">🔄 Toggle Landscape</button>
+        <button class="btn" id="btnClipboard">📋 Copy to Clipboard</button>
+        <button class="btn" id="btnExternal">🌐 Open External URL</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>💾 Local Storage & File Input</h2>
+      <div class="storage-row">
+        <span>Persistent Counter: <strong id="storageCount">0</strong></span>
+        <button class="btn btn-sm" id="btnIncrement">➕ Increment</button>
+      </div>
+      <div class="file-row">
+        <label for="fileInput" class="file-label">📁 Test &lt;input type="file"&gt;</label>
+        <input type="file" id="fileInput" class="file-input">
+        <span id="fileName" class="file-name-text">No file chosen</span>
+      </div>
+    </section>
+
+    <section class="card logs-card">
+      <div class="card-header">
+        <h2>📝 Bridge Diagnostics Console</h2>
+        <button class="btn btn-sm btn-ghost" id="btnClearLogs">Clear</button>
+      </div>
+      <div class="log-console" id="logConsole">
+        <div class="log-entry log-info">[System] Web application loaded from appassets.androidplatform.net</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="bridge.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

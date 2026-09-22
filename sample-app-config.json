@@ -1,0 +1,52 @@
+{
+  "appName": "Volkan Web2Android",
+  "applicationId": "com.volkan.web2android.app",
+  "versionCode": 1,
+  "versionName": "1.0.0",
+  "webAppOrigin": "https://appassets.androidplatform.net",
+  "webAppAssetDirectory": "web",
+  "webAppEntry": "index.html",
+  "orientationMode": "PORTRAIT",
+  "fullscreenMode": "EDGE_TO_EDGE",
+  "networkRequired": false,
+  "hardwareAcceleration": true,
+  "safeBrowsingEnabled": true,
+  "keepScreenOn": true,
+  "vibrationEnabled": true,
+  "cameraEnabled": false,
+  "microphoneEnabled": false,
+  "geolocationEnabled": false,
+  "notificationsEnabled": false,
+  "clipboardEnabled": true,
+  "downloadPolicyEnabled": true,
+  "filePickerEnabled": true,
+  "backButtonPolicy": "WEB_HISTORY_FIRST",
+  "splashConfiguration": {
+    "backgroundColor": "#0B0F19",
+    "iconAnimationDurationMs": 800
+  },
+  "privacy": {
+    "contactEmail": "volkanolgac@gmail.com",
+    "developerName": "Volkan Olgaç",
+    "dataCollection": {
+      "personalData": false,
+      "accountData": false,
+      "email": false,
+      "location": false,
+      "camera": false,
+      "microphone": false,
+      "deviceIdentifiers": false,
+      "analytics": false,
+      "advertising": false,
+      "crashReports": false,
+      "gameplayData": false
+    },
+    "dataUse": [
+      "Local application rendering and execution",
+      "On-device storage of user game states, preferences, and session data"
+    ],
+    "thirdParties": [],
+    "retention": "No personal data is collected or retained on remote servers by default. Locally stored web cache and preferences remain on the device until the user clears application storage or uninstalls the application.",
+    "deletion": "Users can delete all local application data at any time through Android Settings > Apps > Storage > Clear Data, or by requesting support at the contact email address."
+  }
+}

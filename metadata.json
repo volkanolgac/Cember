@@ -1,0 +1,8 @@
+{
+  "name": "Cember",
+  "description": "Cember - A new challange game",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
