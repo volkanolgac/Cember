@@ -132,8 +132,22 @@ export const CountryFlag: React.FC<CountryFlagProps> = ({
       ? 'rounded-md'
       : 'rounded-sm';
 
-  if (!imgUrl || hasError) {
-    // Fallback: render emoji or colored badge
+  if (team?.flagCode === 'color' || !imgUrl || hasError) {
+    // Basic color team badge or emoji fallback
+    if (team?.flagCode === 'color' && 'paddleColor' in team && team.paddleColor) {
+      return (
+        <div
+          className={`inline-flex items-center justify-center shrink-0 overflow-hidden select-none border border-white/40 shadow-sm ${sizeClasses} ${shapeClasses} ${className}`}
+          style={{
+            backgroundColor: team.paddleColor,
+            boxShadow: `0 0 8px ${team.glowColor || team.paddleColor}`,
+          }}
+          title={teamName}
+        >
+          <span className="text-[10px] select-none drop-shadow">{team?.flag}</span>
+        </div>
+      );
+    }
     return (
       <span
         className={`inline-flex items-center justify-center shrink-0 overflow-hidden font-bold select-none ${sizeClasses} ${shapeClasses} ${className}`}

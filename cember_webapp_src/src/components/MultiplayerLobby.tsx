@@ -14,7 +14,7 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { CountryTeam } from '../types';
-import { TOURNAMENT_COUNTRIES } from '../data/tournamentData';
+import { TOURNAMENT_COUNTRIES, BASIC_COLOR_TEAMS } from '../data/tournamentData';
 import { MultiplayerManager, ConnectionStatus } from '../utils/multiplayer';
 import { soundEngine } from '../utils/audio';
 import { CountryFlag } from './CountryFlag';
@@ -53,6 +53,7 @@ export const MultiplayerLobby: React.FC<MultiplayerLobbyProps> = ({
   const [opponentTeam, setOpponentTeam] = useState<CountryTeam | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [showTeamPicker, setShowTeamPicker] = useState<boolean>(false);
+  const [pickerTab, setPickerTab] = useState<'countries' | 'colors'>('countries');
 
   // Parse URL query parameter for room code if someone opened a shared link (e.g. ?room=123456)
   useEffect(() => {
@@ -607,12 +608,12 @@ export const MultiplayerLobby: React.FC<MultiplayerLobbyProps> = ({
         )}
       </div>
 
-      {/* Country Selection Modal */}
+      {/* Team / Color Selection Modal */}
       {showTeamPicker && (
         <div className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md animate-in fade-in duration-200 select-none">
           <div className="relative w-full max-h-[85vh] rounded-3xl bg-slate-900 border border-slate-800 p-4 flex flex-col shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h3 className="text-sm font-black text-white">ONLINE TAKIMINI SEÇ (40 ÜLKE)</h3>
+            <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+              <h3 className="text-sm font-black text-white">TAKIM & ÇUBUK RENK SEÇİMİ</h3>
               <button
                 onClick={() => setShowTeamPicker(false)}
                 className="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-xs font-bold"
@@ -621,8 +622,40 @@ export const MultiplayerLobby: React.FC<MultiplayerLobbyProps> = ({
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto grid grid-cols-2 gap-2 my-3 pr-1">
-              {TOURNAMENT_COUNTRIES.map((team) => {
+            {/* Sub-tabs: Ülkeler vs Temel Renkler */}
+            <div className="grid grid-cols-2 p-1 bg-slate-950/90 rounded-2xl border border-slate-800/80 my-2">
+              <button
+                id="picker-tab-countries"
+                onClick={() => {
+                  soundEngine.playClick();
+                  setPickerTab('countries');
+                }}
+                className={`py-2 rounded-xl text-xs font-black tracking-wider transition-all flex items-center justify-center gap-1.5 ${
+                  pickerTab === 'countries'
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <span>🏳️ Ülkeler (40 Bayrak)</span>
+              </button>
+              <button
+                id="picker-tab-colors"
+                onClick={() => {
+                  soundEngine.playClick();
+                  setPickerTab('colors');
+                }}
+                className={`py-2 rounded-xl text-xs font-black tracking-wider transition-all flex items-center justify-center gap-1.5 ${
+                  pickerTab === 'colors'
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <span>🎨 Temel Renkler (10 Çubuk)</span>
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto grid grid-cols-2 gap-2 my-1 pr-1">
+              {(pickerTab === 'countries' ? TOURNAMENT_COUNTRIES : BASIC_COLOR_TEAMS).map((team) => {
                 const isSelected = selectedTeam.id === team.id;
                 return (
                   <button

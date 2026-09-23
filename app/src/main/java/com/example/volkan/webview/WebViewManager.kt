@@ -24,8 +24,8 @@ class WebViewManager(
     fun configureWebView(webView: WebView) {
         VolkanLogger.i(VolkanLogger.TAG_WEBVIEW, "Configuring WebView for high-performance execution and security")
 
-        // Enable hardware acceleration for 60 FPS Canvas and WebGL
-        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
+        // Configure view layer type (let Chromium manage canvas/WebGL hardware acceleration internally)
+        webView.setLayerType(View.LAYER_TYPE_NONE, null)
         webView.isScrollbarFadingEnabled = true
         webView.isVerticalScrollBarEnabled = false
         webView.isHorizontalScrollBarEnabled = false

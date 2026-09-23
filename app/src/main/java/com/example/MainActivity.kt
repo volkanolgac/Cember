@@ -204,7 +204,11 @@ class MainActivity : ComponentActivity() {
             onRendererCrashCallback = {
                 VolkanLogger.e(VolkanLogger.TAG_SHELL, "Handling onRenderProcessGone recovery")
                 runOnUiThread {
-                    overlayManager.showRendererCrash()
+                    try {
+                        webView?.destroy()
+                    } catch (_: Exception) {}
+                    setupNewWebView()
+                    loadApp()
                 }
             }
         )

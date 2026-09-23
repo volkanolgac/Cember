@@ -201,9 +201,9 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
     const ballSkin = BALL_SKINS.find((b) => b.id === shop.equippedBallSkinId) || BALL_SKINS[0];
     equippedBallSkinRef.current = ballSkin;
 
-    if (isTournamentMode) {
-      // SADECE DÜNYA TURNUVASI MODUNDA:
-      // Oyuncu ve rakip çubukları ülke bayraklarının 2 veya 3 rengi ile oluşturulur
+    if (isTournamentMode || isMultiplayer) {
+      // DÜNYA TURNUVASI VE MULTIPLAYER MODUNDA:
+      // Oyuncu ve rakip çubukları ülke bayraklarının / renklerin şeritleri ve 3D gölgelendirme ile oluşturulur
       if (playerTeam) {
         playerPaddleRef.current.color = playerTeam.paddleColor;
         playerPaddleRef.current.secondaryColor = playerTeam.secondaryColor;
@@ -271,7 +271,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
       lastBallLaunchDirRef.current = null;
       hasInitializedMatchRef.current = false;
     }
-  }, [playerTeam, opponentTeam, stage, isTournamentMode, difficulty]);
+  }, [playerTeam, opponentTeam, stage, isTournamentMode, isMultiplayer, difficulty]);
 
   // Entities refs
   const ballRef = useRef<Ball>({
@@ -4026,8 +4026,8 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
           ctx.beginPath();
           ctx.roundRect(oppX0, oppY0, opp.width, opp.height, oppR);
           ctx.fill();
-        } else if (isTournamentMode && opp.flagColors && opp.flagColors.length > 0) {
-          // Dünya Turnuvası Modu: Rakip çubuğu ülke bayrağı renkleriyle (2 veya 3 renk)
+        } else if ((isTournamentMode || isMultiplayer) && opp.flagColors && opp.flagColors.length > 0) {
+          // Dünya Turnuvası & Multiplayer Modu: Rakip çubuğu 3D renk şeritleriyle
           ctx.save();
           ctx.beginPath();
           ctx.roundRect(oppX0, oppY0, opp.width, opp.height, oppR);
@@ -4074,7 +4074,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
         ctx.roundRect(oppX0, oppY0, opp.width, opp.height, oppR);
         ctx.strokeStyle = isOppMega
           ? '#f5d0fe'
-          : (isTournamentMode && opp.flagColors ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.4)');
+          : ((isTournamentMode || isMultiplayer) && opp.flagColors ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.4)');
         ctx.lineWidth = 1.3;
         ctx.stroke();
 
@@ -4252,8 +4252,8 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
           ctx.beginPath();
           ctx.roundRect(plyX0, plyY0, ply.width, ply.height, plyR);
           ctx.fill();
-        } else if (isTournamentMode && ply.flagColors && ply.flagColors.length > 0) {
-          // Dünya Turnuvası Modu: Oyuncu çubuğu ülke bayrağı renkleriyle (2 veya 3 renk)
+        } else if ((isTournamentMode || isMultiplayer) && ply.flagColors && ply.flagColors.length > 0) {
+          // Dünya Turnuvası & Multiplayer Modu: Oyuncu çubuğu 3D renk şeritleriyle
           ctx.save();
           ctx.beginPath();
           ctx.roundRect(plyX0, plyY0, ply.width, ply.height, plyR);
@@ -4300,7 +4300,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
         ctx.roundRect(plyX0, plyY0, ply.width, ply.height, plyR);
         ctx.strokeStyle = isMega
           ? '#f5d0fe'
-          : (isTournamentMode && ply.flagColors ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.4)');
+          : ((isTournamentMode || isMultiplayer) && ply.flagColors ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.4)');
         ctx.lineWidth = 1.3;
         ctx.stroke();
 

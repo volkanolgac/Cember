@@ -17,7 +17,8 @@ from pathlib import Path
 WORKSPACE_ROOT = Path(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 EXCLUDED_DIRS = {
     "app", "gradle", ".gradle", "build", ".git", ".idea", "generated",
-    ".build-outputs", "tools", ".android", "bin", ".gradle_home"
+    ".build-outputs", "tools", ".android", "bin", ".gradle_home",
+    "webapp_input", "sample-web"
 }
 
 def log(msg, emoji="ℹ️"):
@@ -361,7 +362,7 @@ class UniversalBuildAndPackageEngine:
         # Run install if node_modules not present
         if not (project_dir / "node_modules").exists():
             log(f"Running '{pm} install'...", "📦")
-            cmd_install = [pm, "install", "--prefer-offline", "--no-audit"] if pm == "npm" else [pm, "install"]
+            cmd_install = [pm, "--prefix", str(project_dir), "install", "--prefer-offline", "--no-audit"] if pm == "npm" else [pm, "install"]
             subprocess.run(cmd_install, cwd=str(project_dir), check=True)
 
         # Determine build script
@@ -375,7 +376,7 @@ class UniversalBuildAndPackageEngine:
             raise RuntimeError(f"❌ No suitable build script found in package.json (available: {list(scripts.keys())})")
 
         log(f"Executing web build: '{pm} run {build_script}'...", "🚀")
-        cmd_build = [pm, "run", build_script] if pm != "yarn" else ["yarn", build_script]
+        cmd_build = [pm, "--prefix", str(project_dir), "run", build_script] if pm == "npm" else ([pm, "run", build_script] if pm != "yarn" else ["yarn", build_script])
         subprocess.run(cmd_build, cwd=str(project_dir), check=True)
 
         # Detect build output folder
@@ -514,7 +515,10 @@ class UniversalBuildAndPackageEngine:
     def _sync_app_config(self):
         # Load or generate app-config.json
         base_config = {}
-        if self.disc.discovered_config_path and os.path.exists(self.disc.discovered_config_path):
+        if os.path.exists(self.target_config_file):
+            with open(self.target_config_file, "r", encoding="utf-8") as fp:
+                base_config = json.load(fp)
+        elif self.disc.discovered_config_path and os.path.exists(self.disc.discovered_config_path):
             with open(self.disc.discovered_config_path, "r", encoding="utf-8") as fp:
                 base_config = json.load(fp)
 
